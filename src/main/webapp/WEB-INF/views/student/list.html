@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/students/create">Create new student</a>
+<h1>Customers</h1>
+<table border="1">
+    <tr>
+        <th> Name</th>
+        <th>Age</th>
+        <th>Score</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="student : ${students}">
+        <tr>
+            <td th:text="${student.getName()}"></td>
+            <td th:text="${student.getAge()}"></td>
+            <td th:text="${student.getScore()}"></td>
+            <td><a th:href="@{/students/edit/__${student.getId()}__ }">Edit</a></td>
+            <td><a th:href="@{/students/delete/__${student.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

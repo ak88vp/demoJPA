@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<form method="post">-->
+<!--    <input type="hidden" name="id" th:value="${student.get().getId()}">-->
+<!--    <input type="text" name="name" th:value="${student.get().getName()}">-->
+<!--    <input type="text" name="age" th:value="${student.get().getAge()}">-->
+<!--    <input type="text" name="score" th:value="${student.get().getScore()}">-->
+<!--    <button> edit</button>-->
+<!--</form>-->
+
+<form method="post">
+    <input type="hidden" name="id" th:value="${student.getId()}">
+    <input type="text" name="name" th:value="${student.getName()}">
+    <input type="text" name="age" th:value="${student.getAge()}">
+    <input type="text" name="score" th:value="${student.getScore()}">
+    <button> edit</button>
+</form>
+
+</body>
+</html>
