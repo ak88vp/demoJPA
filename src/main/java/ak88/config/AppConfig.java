@@ -1,6 +1,9 @@
 package ak88.config;
 
 
+import ak88.formatter.CategoryFormatter;
+import ak88.service.CategoryService;
+import ak88.service.CategoryServiceImpl;
 import ak88.service.StudentService;
 import ak88.service.StudentServiceImpl;
 import org.springframework.beans.BeansException;
@@ -118,6 +121,15 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     @Bean
     public StudentService studentService(){
         return new StudentServiceImpl();
+    }
+
+    @Bean
+    CategoryService categoryService(){return new CategoryServiceImpl();}
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new CategoryFormatter(applicationContext.getBean(CategoryServiceImpl.class)));
+
     }
 
 }

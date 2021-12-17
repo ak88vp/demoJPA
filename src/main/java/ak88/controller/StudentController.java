@@ -25,20 +25,24 @@ public class StudentController {
         model.addAttribute("students",studentIterable);
         return "/student/list";
     }
+
     @GetMapping("create")
     public String showCreate(){
         return "/student/create";
     }
+
     @PostMapping("create")
     public String createStudent(Student student){
         studentService.save(student);
         return "redirect:/students";
     }
+
     @GetMapping("delete/{id}")
     public String deleteStudent(@PathVariable Long id){
         studentService.remove(id);
         return "redirect:/students";
     }
+
     @GetMapping("edit/{id}")
     public String showEdit(@PathVariable Long id,Model model){
         Optional<Student> student = studentService.findById(id);
@@ -46,6 +50,7 @@ public class StudentController {
         model.addAttribute("student",student1);
         return "/student/edit";
     }
+
     @PostMapping("edit/{id}")
     public String editStudent(Student student){
         studentService.save(student);

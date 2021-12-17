@@ -9,8 +9,24 @@ public class Student {
     private String name;
     private int age;
     private int score;
+    private int idCategory;
 
-    public Student( String name, int age, int score) {
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
+    }
+
+    public Student(String name, int age, int score, int idCategory) {
+        this.name = name;
+        this.age = age;
+        this.score = score;
+        this.idCategory = idCategory;
+    }
+
+    public Student(String name, int age, int score) {
         this.name = name;
         this.age = age;
         this.score = score;
