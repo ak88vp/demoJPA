@@ -5,6 +5,7 @@ import ak88.repository.IStudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,8 +14,8 @@ public class StudentServiceImpl implements StudentService {
     IStudentRepository studentRepository;
 
     @Override
-    public Iterable<Student> findAll() {
-        return studentRepository.findAll();
+    public List<Student> findAll() {
+        return (List<Student>) studentRepository.findAll();
     }
 
     @Override

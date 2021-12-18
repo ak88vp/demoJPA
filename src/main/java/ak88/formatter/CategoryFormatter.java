@@ -15,20 +15,18 @@ public class CategoryFormatter implements Formatter<Category> {
     private CategoryService categoryService;
 
     @Autowired
-    public CategoryFormatter(CategoryService categoryService){
-        this.categoryService=categoryService;
+    public CategoryFormatter(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
 
     @Override
     public Category parse(String text, Locale locale) throws ParseException {
-
-        Optional<Category> categoryOptional=categoryService.findById(Long.parseLong(text));
-
+        Optional<Category> categoryOptional = categoryService.findById(Long.parseLong(text));
         return categoryOptional.orElse(null);
     }
 
     @Override
     public String print(Category object, Locale locale) {
-        return  "[" + object.getId() + ", " +object.getName() + "]";
+        return "[" + object.getId() + ", " + object.getName() + "]";
     }
 }

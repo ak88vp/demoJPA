@@ -5,22 +5,37 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<!--<form method="post">-->
-<!--    <input type="hidden" name="id" th:value="${student.get().getId()}">-->
-<!--    <input type="text" name="name" th:value="${student.get().getName()}">-->
-<!--    <input type="text" name="age" th:value="${student.get().getAge()}">-->
-<!--    <input type="text" name="score" th:value="${student.get().getScore()}">-->
-<!--    <button> edit</button>-->
-<!--</form>-->
+<style>
+    .edit{
+        background: aqua;
+        height: 25px;
+        width: 100px;
+    }
+    .br {
+        background: url("https://media.viezone.vn/prod/2021/11/5/ezgif_com_gif_maker_22_07a2d21b01.gif");
+        background-size: cover;
+    }
+    p{
+        color: greenyellow;
+    }
+</style>
+<body class="br">
+<center >
+    <div>
 
+
+    <H1>Edit Student</H1>
+    <a href="/students/"> Back home</a>
 <form method="post">
     <input type="hidden" name="id" th:value="${student.getId()}">
-    <input type="text" name="name" th:value="${student.getName()}">
-    <input type="text" name="age" th:value="${student.getAge()}">
-    <input type="text" name="score" th:value="${student.getScore()}">
-    <button> edit</button>
-</form>
-
+   <p>Name :<input type="text" name="name" th:value="${student.getName()}"></p>
+    <p> Age :<input type="text" name="age" th:value="${student.getAge()}"></p>
+    <p> Score :<input type="text" name="score" th:value="${student.getScore()}"></p>
+     <select name="idCategory" style="background: pink">
+        <option th:each="category :${categorys}" th:value="${category.getId()}" th:text="${category.getName()}" ></option>
+    </select>
+    <button class="edit"> Edit</button>
+</form> </div>
+</center>
 </body>
 </html>

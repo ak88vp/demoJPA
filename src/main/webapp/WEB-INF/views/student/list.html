@@ -4,29 +4,105 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<a href="/students/create">Create new student</a>
-<h1>Customers</h1>
-<table border="1">
-    <tr>
-        <th> Name</th>
-        <th>Age</th>
-        <th>Score</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-    <th:block th:each="student : ${students}">
-        <tr>
-            <td th:text="${student.getName()}"></td>
-            <td th:text="${student.getAge()}"></td>
-            <td th:text="${student.getScore()}"></td>
-            <td><a th:href="@{/students/edit/__${student.getId()}__ }">Edit</a></td>
-            <td><a th:href="@{/students/delete/__${student.id}__ }"
-                   onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
-                   title="Link Title"
-            >Delete</a></td>
-        </tr>
-    </th:block>
-</table>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+<style>
+    table {
+        border: 1px solid #d21d1d;
+    }
+
+    th {
+        border: 1px solid #d21d1d;
+    }
+
+    td {
+        border: 1px solid #d21d1d;
+    }
+
+    .br {
+        background: url("https://media.viezone.vn/prod/2021/11/5/ezgif_com_gif_maker_22_07a2d21b01.gif");
+        background-size: cover;
+    }
+    .chu{
+        color: black;
+        size: 3px;
+    }
+
+</style>
+
+<body class="br">
+<center>
+
+        <h1>List student</h1>
+        <br>
+        <br>
+        <br>
+        <div class="center-pill">
+            <div class="row">
+                <div class="offset-1"></div>
+                <div class="col-2">
+                    <a class="btn btn-primary" href="/students/create" role="button"> + Add New Student</a>
+                </div>
+                <div class="offset-5"></div>
+                <div class="col-4" style="background: none">
+                    <nav class="navbar navbar-light bg-light" >
+                        <form class="form-inline" style="background: none">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="key">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="center-pill">
+            <div class="row">
+                <div class="offset-1"></div>
+                <div class="col-10">
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="student,index : ${students}">
+                            <tr>
+                                <td class="chu" th:text="${index.count}"></td>
+                                <td class="chu" th:text="${student.getName()}"></td>
+                                <td class="chu" th:text="${student.getAge()}"></td>
+                                <td class="chu" th:text="${student.getScore()}"></td>
+                                <td class="chu" th:text="${student.getCategory().getName()}"></td>
+
+                                <td><a class="aa"  th:href="@{/students/edit/__${student.getId()}__ }">Edit</a></td>
+                                <td><a class="aa"  th:href="@{/students/delete/__${student.id}__ }"
+                                       onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
+                                       title="Link Title"
+                                >Delete</a></td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="offset-1"></div>
+
+            </div>
+
+
+
+    </div>
+</center>
 </body>
 </html>

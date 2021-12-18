@@ -5,6 +5,7 @@ import ak88.repository.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,8 +14,8 @@ public class CategoryServiceImpl implements CategoryService {
     ICategoryRepository categoryRepository;
 
     @Override
-    public Iterable<Category> findAll() {
-        return categoryRepository.findAll();
+    public List<Category> findAll() {
+        return (List<Category>) categoryRepository.findAll();
     }
 
     @Override
