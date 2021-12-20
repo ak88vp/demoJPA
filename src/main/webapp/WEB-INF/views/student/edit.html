@@ -34,10 +34,16 @@
             <p> Age :<input type="text" name="age" th:value="${student.getAge()}"></p>
             <p> Score :<input type="text" name="score" th:value="${student.getScore()}"></p>
             <select name="idCategory" style="background: pink">
-                <option th:text="${student.getCategory().getName()}"></option>
-                <option th:each="category :${categorys}" th:value="${category.getId()}"
-                        th:text="${category.getName()}">
-                </option>
+
+                <option th:text="${student.getCategory().getName()}" th:value="${student.getCategory().getId()}"></option>
+                <th:block th:each="category,index : ${categorys}">
+                    <th:block th:if="${student.getCategory().getId()}!=${category.getId()}">
+                        <option  th:value="${category.getId()}"
+                                 th:text="${category.getName()}">
+                        </option>
+                    </th:block>
+
+                </th:block>
             </select>
             <button class="edit"> Edit</button>
         </form>
