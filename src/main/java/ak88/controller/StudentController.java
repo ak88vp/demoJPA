@@ -50,19 +50,20 @@ public class StudentController {
         return "/student/list";
 
     }
-    @GetMapping("sort")
-    public String showSort(Model model,String key){
+    @GetMapping("sort/{idc}")
+    public String showSort(Model model,String key,@PathVariable int idc){
         List<Student> studentList;
         if(key!=null){
             studentList= (List<Student>) studentService.findByNameContaining(key);
 
-        }else {
+        }else if(idc==1){
             studentList = (List<Student>) studentService.findAllByOrderByAgeDesc();
+        }else {
+            studentList= (List<Student>) studentService.findAllByOrderByAgeAsc();
         }
         model.addAttribute("students",studentList);
         return "/student/list";
     }
-
     @GetMapping("create")
     public String showCreate(Model model) {
 
@@ -98,7 +99,6 @@ public class StudentController {
 
     @PostMapping("edit/{id}")
     public String editStudent(Student student, long idCategory) {
-
         Optional<Category> categoryOptional = categoryService.findById(idCategory);
         Category category = categoryOptional.get();
         student.setCategory(category);

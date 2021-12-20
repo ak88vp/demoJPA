@@ -46,4 +46,9 @@ public class StudentServiceImpl implements StudentService {
     public Iterable<Student> findAllByOrderByAgeDesc() {
         return studentRepository.findAllByOrderByAgeDesc();
     }
+
+    @Override
+    public Iterable<Student> findAllByOrderByAgeAsc() {
+        return studentRepository.findAllByOrderByAgeAsc();
+    }
 }

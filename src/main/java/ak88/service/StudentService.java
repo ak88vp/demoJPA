@@ -6,4 +6,5 @@ public interface StudentService extends IGeneralService<Student> {
     Iterable<Student> findByName( String name);
     Iterable<Student> findByNameContaining( String name);
     Iterable<Student> findAllByOrderByAgeDesc();
+    Iterable<Student> findAllByOrderByAgeAsc();
 }

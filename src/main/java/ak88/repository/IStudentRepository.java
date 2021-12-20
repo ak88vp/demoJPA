@@ -10,5 +10,6 @@ public interface IStudentRepository extends JpaRepository<Student,Long> {
     Iterable<Student> findByName( String name);
     Iterable<Student> findByNameContaining( String name);
     Iterable<Student> findAllByOrderByAgeDesc();
+    Iterable<Student> findAllByOrderByAgeAsc();
 
 }
