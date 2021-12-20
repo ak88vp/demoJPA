@@ -88,7 +88,8 @@
 
                                 <td><a class="aa"  th:href="@{/students/edit/__${student.getId()}__ }">Edit</a></td>
                                 <td><a class="aa"  th:href="@{/students/delete/__${student.id}__ }"
-                                       onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
+                                       onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation();
+                                           event.preventDefault();};"
                                        title="Link Title"
                                 >Delete</a></td>
                             </tr>
