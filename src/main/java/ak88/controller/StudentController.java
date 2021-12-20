@@ -42,7 +42,6 @@ public class StudentController {
         if (key != null) {
           studentIterable= (List<Student>) studentService.findByNameContaining(key);
 
-
         } else {
             studentIterable = studentService.findAll();
 
@@ -52,14 +51,21 @@ public class StudentController {
 
     }
     @GetMapping("sort")
-    public String showSort(Model model){
-        List<Student> studentList= (List<Student>) studentService.findAllByOrderByAgeDesc();
+    public String showSort(Model model,String key){
+        List<Student> studentList;
+        if(key!=null){
+            studentList= (List<Student>) studentService.findByNameContaining(key);
+
+        }else {
+            studentList = (List<Student>) studentService.findAllByOrderByAgeDesc();
+        }
         model.addAttribute("students",studentList);
         return "/student/list";
     }
 
     @GetMapping("create")
     public String showCreate(Model model) {
+
         List<Category> categoryList = categoryService.findAll();
         model.addAttribute("categorys", categoryList);
         return "/student/create";
