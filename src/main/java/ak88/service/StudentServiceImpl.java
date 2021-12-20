@@ -41,4 +41,9 @@ public class StudentServiceImpl implements StudentService {
     public Iterable<Student> findByNameContaining(String name) {
         return studentRepository.findByNameContaining(name);
     }
+
+    @Override
+    public Iterable<Student> findAllByOrderByAgeDesc() {
+        return studentRepository.findAllByOrderByAgeDesc();
+    }
 }

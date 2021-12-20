@@ -38,20 +38,24 @@ public class StudentController {
     @GetMapping("")
     public String showList(Model model, String key) {
         List<Student> studentIterable ;
-        List<Student> studentList = new ArrayList<>();
+
         if (key != null) {
           studentIterable= (List<Student>) studentService.findByNameContaining(key);
-          studentList=studentIterable;
+
 
         } else {
             studentIterable = studentService.findAll();
-            studentList = studentIterable;
+
         }
-        model.addAttribute("students", studentList);
+        model.addAttribute("students", studentIterable);
         return "/student/list";
 
-
-
+    }
+    @GetMapping("sort")
+    public String showSort(Model model){
+        List<Student> studentList= (List<Student>) studentService.findAllByOrderByAgeDesc();
+        model.addAttribute("students",studentList);
+        return "/student/list";
     }
 
     @GetMapping("create")
